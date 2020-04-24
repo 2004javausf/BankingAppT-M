@@ -1,4 +1,4 @@
-package com.customers.beans;
+package com.revarure.beans;
 
 public class AccountInfo {
 	private String username;
@@ -19,6 +19,5 @@ public class AccountInfo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
 
 }
