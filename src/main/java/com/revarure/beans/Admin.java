@@ -1,6 +1,6 @@
 package com.revarure.beans;
 
-public class Admin {
+public class Admin extends Employee {
 	private int adminId = -1;
 
 	public int getAdminId() {
@@ -10,5 +10,11 @@ public class Admin {
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
+	
+	
+	void deleteAccount() {
+		
+	}
+	
 
 }

@@ -11,4 +11,11 @@ public class Employee {
 		this.employeeID = employeeID;
 	}
 	
+void createUser() {
+		
+	}
+void createAccount() {
+	
+}
+	
 }
