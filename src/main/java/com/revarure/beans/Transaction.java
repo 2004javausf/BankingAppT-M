@@ -11,7 +11,7 @@ public class Transaction {
 	private String positiveAmount;//if sign of the amount is positive it decreases the from account(loses money) and increase the to account (gains money)
 	private String negativeAmount;
 	private LocalDateTime date;
-	private Branch branchCode;
+	
 	
 	public String getTransactionId() {
 		return transactionId;
@@ -61,10 +61,5 @@ public class Transaction {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
-	public Branch getBranchCode() {
-		return branchCode;
-	}
-	public void setBranchCode(Branch branchCode) {
-		this.branchCode = branchCode;
-	}
+	
 }
