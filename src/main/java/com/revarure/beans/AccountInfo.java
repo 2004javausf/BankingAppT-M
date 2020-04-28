@@ -1,6 +1,12 @@
 package com.revarure.beans;
 
-public class AccountInfo extends User {
+import java.io.Serializable;
+
+public class AccountInfo extends User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5206754926733442486L;
 	private String username;
 	private String password;
 	private long accountId;

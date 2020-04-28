@@ -1,8 +1,13 @@
 package com.revarure.beans;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Transaction {
+public class Transaction implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9180744069953356784L;
 	private String transactionId;
 	private AccountTypes typeCode;
 	private String transactionTypeName;
@@ -11,6 +16,23 @@ public class Transaction {
 	private String positiveAmount;//if sign of the amount is positive it decreases the from account(loses money) and increase the to account (gains money)
 	private String negativeAmount;
 	private LocalDateTime date;
+	
+	public Transaction() {
+		super();
+	}
+	
+	public Transaction(String transactionId, AccountTypes typeCode, String transactionTypeName, String fromAccountNo,
+			String toAccountNo, String positiveAmount, String negativeAmount, LocalDateTime date) {
+		super();
+		this.transactionId = transactionId;
+		this.typeCode = typeCode;
+		this.transactionTypeName = transactionTypeName;
+		this.fromAccountNo = fromAccountNo;
+		this.toAccountNo = toAccountNo;
+		this.positiveAmount = positiveAmount;
+		this.negativeAmount = negativeAmount;
+		this.date = date;
+	}
 	
 	
 	public String getTransactionId() {
@@ -60,6 +82,13 @@ public class Transaction {
 	}
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+	
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", typeCode=" + typeCode + ", transactionTypeName="
+				+ transactionTypeName + ", fromAccountNo=" + fromAccountNo + ", toAccountNo=" + toAccountNo
+				+ ", positiveAmount=" + positiveAmount + ", negativeAmount=" + negativeAmount + ", date=" + date + "]";
 	}
 	
 }
