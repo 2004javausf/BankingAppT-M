@@ -1,5 +1,7 @@
 package com.revarure.beans;
 
+import java.util.ArrayList;
+
 public class User {
 	private String firstName;
 	private String middleName;
@@ -8,6 +10,12 @@ public class User {
 	private Long phoneNumber;
 	private String email;
 	private String maritalStatus;
+	private boolean isAdmin;
+	private boolean isEmployee;
+	private ArrayList <Integer> id;
+	
+	
+
 
 
 
@@ -52,5 +60,23 @@ public String getMaritalStatus() {
 }
 public void setMaritalStatus(String maritalStatus) {
 	this.maritalStatus = maritalStatus;
+}
+public boolean isAdmin() {
+	return isAdmin;
+}
+public void setAdmin(boolean isAdmin) {
+	this.isAdmin = isAdmin;
+}
+public boolean isEmployee() {
+	return isEmployee;
+}
+public void setEmployee(boolean isEmployee) {
+	this.isEmployee = isEmployee;
+}
+public ArrayList<Integer> getId() {
+	return id;
+}
+public void setId(ArrayList<Integer> id) {
+	this.id = id;
 }
 }
