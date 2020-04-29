@@ -7,8 +7,8 @@ import com.revarure.beans.AccountInfo;
 public class Transfer {
 	public void transfer(AccountInfo a, AccountInfo b) {
 		//transfer money from a to b
-		long firstBalance = a.getBalance();
-		long secondBalance = b.getBalance();
+		int firstBalance = (int) a.getBalance();
+		int secondBalance = (int) b.getBalance();
 		Scanner s = new Scanner(System.in);
 		long transferAmount = (s.nextLong());
 		a.setBalance(firstBalance - transferAmount);
