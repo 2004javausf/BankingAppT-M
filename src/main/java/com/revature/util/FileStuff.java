@@ -1,8 +1,10 @@
 package com.revature.util;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
@@ -24,5 +26,20 @@ public class FileStuff {
 		e.printStackTrace();
 	}
 	
+	}
+	
+	
+	//read method
+	
+	public static void readAccountFile() {
+		try {
+			ObjectInputStream acctInfoIn = new ObjectInputStream(new FileInputStream(accountFile));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
