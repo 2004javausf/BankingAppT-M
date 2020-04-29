@@ -3,6 +3,8 @@ package com.revature.service;
 import java.util.Scanner;
 
 import com.revarure.beans.AccountInfo;
+import com.revature.util.FileStuff;
+import com.revature.util.Roster;
 
 public class Transfer {
 	public void transfer(AccountInfo a, AccountInfo b) {
