@@ -7,9 +7,9 @@ public class AccountInfo extends User implements Serializable {
 	private static final long serialVersionUID = 5206754926733442486L;
 	private String username;
 	private String password;
-	private long accountId;
+	private int accountId;
 	private int pinCode;
-	private long balance;
+	private double balance;
 
 	public String getUsername() {
 		return username;
@@ -26,16 +26,16 @@ public class AccountInfo extends User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getBalance() {
+	public double getBalance() {
 		return balance;
 	}
-	public void setBalance(long balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 	public long getAccountId() {
 		return accountId;
 	}
-	public void setAccountId(long accountId) {
+	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
 	public int getPinCode() {
