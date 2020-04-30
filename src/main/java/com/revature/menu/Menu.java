@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
+	
 	static Scanner userInput = new Scanner(System.in);
 	static int userChoice;
 //	ArrayList <String> arrayChoice = new ArrayList<>();
@@ -12,6 +13,7 @@ public class Menu {
 		
 	System.out.println("[1] Customer");
 	System.out.println("[2] Employee");
+	System.out.println("[3] Admin");
 	
 	int userEntry = userInput.nextInt();
 	
@@ -38,19 +40,20 @@ public class Menu {
 		System.out.println("Please enter your account number: ");
 		System.out.println("Please enter your pin number: ");
 		
-		
+		if(pinIsValid()) {
+			
+		}
 
         System.out.println("2. Withdraw money");
 
         System.out.println("3. Transfer money");
 
         System.out.print("4. Joint Account");
-        System.out.print("5. Exit");
-        Scanner 
+        System.out.print("5. Exit"); 
 
-        userChoice = Integer.nextInt(userChoice);
+        int userEntry = userInput.nextInt();
 
-        switch (userChoice) {
+        switch (userEntry) {
 
         case 1:
 

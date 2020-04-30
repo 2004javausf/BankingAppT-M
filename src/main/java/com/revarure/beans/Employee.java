@@ -40,13 +40,8 @@ public class Employee extends User {
 		return "Employee [employeeID=" + employeeID + "password" + password + "]";
 	}
 	
+//view customer application
 	
-	void createAccount() {
-		
-	}
-	public void readCustomerInfo() {
-		
-	}
-	
+	//view customer list
 	
 }

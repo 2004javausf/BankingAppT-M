@@ -2,7 +2,7 @@ package com.revarure.beans;
 
 import java.util.ArrayList;
 
-public class Bank {
+public abstract class Bank {
 	private static ArrayList<Account> accounts;
 	private static ArrayList<Employee> employees;
 	private static ArrayList<Transaction> transactions;
@@ -33,7 +33,7 @@ public class Bank {
 		this.admin = admin;
 	}
 
-	//get transaction history
+	//view transaction history
 	public static void completeTransactionHistory() {
 		for(Transaction t: transactions) {
 			System.out.println("Date: " + t.getDate() + "; To Account: " + t.getToAccountNo() + "; From Account: " + t.getFromAccountNo() + "; Amount: " + t.getPositiveAmount());
@@ -55,17 +55,31 @@ public class Bank {
 	
 	//transfer money between accounts
 	
+	//view customer information
+	public void readCustomerInfo() {
+		
+	}
+	
+	
 	//make withdrawals
 	public void withdraw(double amount)
     {
 		int time = 0;
    
-		if (amount >= 0.00 && amount <= balance) {
+		if (amount >= 0.00 && amount <= Account.getBalance()) {
         double balance = Account.getBalance() - amount;
         balance = balance - amount;
         time++;
     }
     }
+	
+	//create an account
+		void createAccount() {
+			
+		}
+		
+	
+	//login information for customer and employee
 	
     
 }

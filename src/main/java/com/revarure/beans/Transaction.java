@@ -70,7 +70,7 @@ public class Transaction implements Serializable{
 	public void setNegativeAmount(int negativeAmount) {
 		this.negativeAmount = negativeAmount;
 	}
-	public LocalDateTime getDate() {
+	public static LocalDateTime getDate() {
 		return date;
 	}
 	public void setDate(LocalDateTime date) {

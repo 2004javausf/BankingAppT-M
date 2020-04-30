@@ -92,4 +92,8 @@ public String toString() {
 	return "User [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", address="
 			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 }
+
+//create user account
+
+//login method
 }
