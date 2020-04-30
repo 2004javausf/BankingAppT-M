@@ -1,6 +1,6 @@
 package com.revarure.beans;
 
-public class Employee extends BankUser {
+public class Employee extends User {
 	private int employeeID = 1;
 	private String password;
 	

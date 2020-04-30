@@ -20,10 +20,10 @@ public class Transaction implements Serializable{
 		super();
 	}
 	
-	public Transaction(int transactionId, String transactionTypeName, int fromAccountNo,
+	public Transaction(String transactionTypeName, int fromAccountNo,
 			int toAccountNo, int positiveAmount, int negativeAmount, LocalDateTime date) {
 		super();
-		Transaction.transactionId = transactionId;
+		this.transactionId = transactionId;
 		this.transactionTypeName = transactionTypeName;
 		this.fromAccountNo = fromAccountNo;
 		this.toAccountNo = toAccountNo;

@@ -14,28 +14,38 @@ public class User implements Serializable {
 	private String address;
 	private Long phoneNumber;
 	private String email;
-	private String maritalStatus;
-	private boolean isAdmin;
-	private boolean isEmployee;
-	private ArrayList <Integer> id;
+	private int id;
+	protected String userType;
 	
-	public User() {
-		super();
+	public int getId() {
+		return id;
 	}
 
-	public User(String firstName, String middleName, String lastName, String address, Long phoneNumber, String email,
-			String maritalStatus, boolean isAdmin, boolean isEmployee, ArrayList<Integer> id) {
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public User() {
+		super();
+		this.id = GenerateID.getCurrentID();
+	}
+
+	public User(String firstName, String middleName, String lastName, String address, Long phoneNumber, String email) {
 		super();
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		this.email = email;
-		this.maritalStatus = maritalStatus;
-		this.isAdmin = isAdmin;
-		this.isEmployee = isEmployee;
-		this.id = id;
+		this.id = GenerateID.getCurrentID();
 	}
 	
 	
@@ -75,40 +85,11 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
-public String getMaritalStatus() {
-	return maritalStatus;
-}
-public void setMaritalStatus(String maritalStatus) {
-	this.maritalStatus = maritalStatus;
-}
-public boolean isAdmin() {
-	return isAdmin;
-}
-public void setAdmin(boolean isAdmin) {
-	this.isAdmin = isAdmin;
-}
-public boolean isEmployee() {
-	return isEmployee;
-}
-public void setEmployee(boolean isEmployee) {
-	this.isEmployee = isEmployee;
-}
-public ArrayList<Integer> getId() {
-	return id;
-}
-public void setId(ArrayList<Integer> id) {
-	this.id = id;
-}
+
 
 @Override
 public String toString() {
 	return "User [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", address="
-			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + ", maritalStatus=" + maritalStatus
-			+ ", isAdmin=" + isAdmin + ", isEmployee=" + isEmployee + ", id=" + id + "]";
-}
-
-public void createUser() {
-	
-	
+			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 }
 }

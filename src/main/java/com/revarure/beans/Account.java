@@ -1,9 +1,8 @@
 package com.revarure.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public class Account extends BankUser implements Serializable {
+public class Account extends User implements Serializable {
 	
 	private static final long serialVersionUID = 5206754926733442486L;
 	private String username;
@@ -12,17 +11,7 @@ public class Account extends BankUser implements Serializable {
 	private static double balance;
 	private static String accountTypeName;
 	
-	
-	
-	private ArrayList<AccountTypes> accounts;
 
-	public ArrayList<AccountTypes> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(ArrayList<AccountTypes> accounts) {
-		this.accounts = accounts;
-	}
 
 	public String getUsername() {
 		return username;
@@ -62,39 +51,32 @@ public class Account extends BankUser implements Serializable {
 		this.accountId = GenerateID.getCurrentID();
 		this.userType = "CUS";
 	}
-	public Account(String username, String password, int accountId, int pinCode,
-			ArrayList<AccountTypes> accounts, String accountTypeName, double balance) {
+	public Account(String username, String password, int accountId, int pinCode, String accountTypeName, double balance) {
 		super();
 		this.username = username;
 		this.accountId = accountId;
 		this.pinCode = pinCode;
-		this.accounts = accounts;
 		this.userType = "CUS";
 		this.accountTypeName = accountTypeName;
 		this.balance=balance;
 	}
 	
 	
-	 // This method adds an account to a customer
-	   public void addAccounts(AccountTypes s) {
-	     accounts.add(s);
-	   }
-	
 	   public String getCustomer(){
 		        return "Name: "+ username +".";
 		      }
 	   
-	   public String getAccountInfo() {
-	     String info = this.getCustomer() + "\n" ;
-	     int i = 0;
-	     while(i<accounts.size()) {
-	       info += accounts.get(i).getAccountTypeName() + "\n";
-	       i++;
-	}
-	     return info;
-	   }
+//	   public String getAccountInfo() {
+//	     String info = this.getCustomer() + "\n" ;
+//	     int i = 0;
+//	     while(i<accounts.size()) {
+//	       info += accounts.get(i).getAccountTypeName() + "\n";
+//	       i++;
+//	}
+//	     return info;
+//	   }
 
 	   public String getAccount() {
-		   return "Account type: " + AccountTypes.getAccountTypeName() + ", Account number: " + accountId + ", Balance: " + AccountTypes.getBalance();
+		   return "Account type: " + accountTypeName + ", Account number: " + accountId + ", Balance: " + balance;
 		       }
 }
