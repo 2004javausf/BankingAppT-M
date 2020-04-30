@@ -7,7 +7,6 @@ public abstract class AccountTypes implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7459542892781787387L;
-	private static String accountTypeCode;
 	private static String accountTypeName;
 	private static double balance;
 	
@@ -15,20 +14,13 @@ public abstract class AccountTypes implements Serializable {
 		super();
 	}
 	
-	public AccountTypes(String accountTypeCode, String accountTypeName, double balance) {
+	public AccountTypes(String accountTypeName, double balance) {
 		super();
-		this.accountTypeCode = accountTypeCode;
 		this.accountTypeName = accountTypeName;
 		this.balance=balance;
 		
 	}
 	
-	public static String getAccountTypeCode() {
-		return accountTypeCode;
-	}
-	public void setAccountTypeCode(String accountTypeCode) {
-		this.accountTypeCode = accountTypeCode;
-	}
 	public static String getAccountTypeName() {
 		return accountTypeName;
 	}

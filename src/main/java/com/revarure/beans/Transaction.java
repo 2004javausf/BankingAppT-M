@@ -8,24 +8,22 @@ public class Transaction implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -9180744069953356784L;
-	private String transactionId;
-	private AccountTypes typeCode;
+	private static int transactionId = 0;
 	private String transactionTypeName;
-	private String fromAccountNo;
-	private String toAccountNo;
-	private String positiveAmount;//if sign of the amount is positive it decreases the from account(loses money) and increase the to account (gains money)
-	private String negativeAmount;
-	private LocalDateTime date;
+	private int fromAccountNo;
+	private int toAccountNo;
+	private int positiveAmount;//if sign of the amount is positive it increases the from account(loses money) and decreases the to account (gains money) while a negative decreases the from account and increases the to account
+	private int negativeAmount;
+	private static LocalDateTime date;
 	
 	public Transaction() {
 		super();
 	}
 	
-	public Transaction(String transactionId, AccountTypes typeCode, String transactionTypeName, String fromAccountNo,
-			String toAccountNo, String positiveAmount, String negativeAmount, LocalDateTime date) {
+	public Transaction(int transactionId, String transactionTypeName, int fromAccountNo,
+			int toAccountNo, int positiveAmount, int negativeAmount, LocalDateTime date) {
 		super();
-		this.transactionId = transactionId;
-		this.typeCode = typeCode;
+		Transaction.transactionId = transactionId;
 		this.transactionTypeName = transactionTypeName;
 		this.fromAccountNo = fromAccountNo;
 		this.toAccountNo = toAccountNo;
@@ -35,46 +33,41 @@ public class Transaction implements Serializable{
 	}
 	
 	
-	public String getTransactionId() {
+	public int getTransactionId() {
 		return transactionId;
 	}
-	public void setTransactionId(String transactionId) {
+	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
-	public AccountTypes getTypeCode() {
-		return typeCode;
-	}
-	public void setTypeCode(AccountTypes typeCode) {
-		this.typeCode = typeCode;
-	}
+
 	public String getTransactionTypeName() {
 		return transactionTypeName;
 	}
 	public void setTransactionTypeName(String transactionTypeName) {
 		this.transactionTypeName = transactionTypeName;
 	}
-	public String getFromAccountNo() {
+	public int getFromAccountNo() {
 		return fromAccountNo;
 	}
-	public void setFromAccountNo(String fromAccountNo) {
+	public void setFromAccountNo(int fromAccountNo) {
 		this.fromAccountNo = fromAccountNo;
 	}
-	public String getToAccountNo() {
+	public int getToAccountNo() {
 		return toAccountNo;
 	}
-	public void setToAccountNo(String toAccountNo) {
+	public void setToAccountNo(int toAccountNo) {
 		this.toAccountNo = toAccountNo;
 	}
-	public String getPositiveAmount() {
+	public int getPositiveAmount() {
 		return positiveAmount;
 	}
-	public void setPositiveAmount(String positiveAmount) {
+	public void setPositiveAmount(int positiveAmount) {
 		this.positiveAmount = positiveAmount;
 	}
-	public String getNegativeAmount() {
+	public int getNegativeAmount() {
 		return negativeAmount;
 	}
-	public void setNegativeAmount(String negativeAmount) {
+	public void setNegativeAmount(int negativeAmount) {
 		this.negativeAmount = negativeAmount;
 	}
 	public LocalDateTime getDate() {
@@ -86,7 +79,7 @@ public class Transaction implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Transaction [transactionId=" + transactionId + ", typeCode=" + typeCode + ", transactionTypeName="
+		return "Transaction [transactionId=" + transactionId + ", transactionTypeName="
 				+ transactionTypeName + ", fromAccountNo=" + fromAccountNo + ", toAccountNo=" + toAccountNo
 				+ ", positiveAmount=" + positiveAmount + ", negativeAmount=" + negativeAmount + ", date=" + date + "]";
 	}

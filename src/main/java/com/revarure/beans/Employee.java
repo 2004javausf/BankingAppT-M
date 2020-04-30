@@ -1,17 +1,31 @@
 package com.revarure.beans;
 
-public class Employee {
-	private int employeeID = -1;
+public class Employee extends BankUser {
+	private int employeeID = 1;
+	private String password;
 	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public Employee() {
 		super();
+		this.userType = "EM";
+		
 	}
-
+	
 	public Employee(int employeeID) {
 		super();
-		this.employeeID = employeeID;
+		this.userType = "EM";
+		
 	}
+
+
 
 	public int getEmployeeID() {
 		return employeeID;
@@ -23,14 +37,16 @@ public class Employee {
 	
 	@Override
 	public String toString() {
-		return "Employee [employeeID=" + employeeID + "]";
+		return "Employee [employeeID=" + employeeID + "password" + password + "]";
 	}
 	
-void createUser() {
+	
+	void createAccount() {
 		
 	}
-void createAccount() {
+	public void readCustomerInfo() {
+		
+	}
 	
-}
 	
 }

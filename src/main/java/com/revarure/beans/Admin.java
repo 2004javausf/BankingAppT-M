@@ -1,16 +1,13 @@
 package com.revarure.beans;
 
 public class Admin extends Employee {
-	private int adminId = -1;
+	private int adminId = 1;
 	
 
-	public Admin() {
+	public Admin(){
 		super();
-	}
-
-	public Admin(int adminId) {
-		super();
-		this.adminId = adminId;
+		this.adminId = GenerateID.getCurrentID();
+		this.userType = "AD";
 	}
 
 	public int getAdminId() {

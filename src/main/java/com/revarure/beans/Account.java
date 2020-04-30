@@ -3,13 +3,16 @@ package com.revarure.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AccountInfo extends User implements Serializable {
+public class Account extends BankUser implements Serializable {
 	
 	private static final long serialVersionUID = 5206754926733442486L;
 	private String username;
-	private String password;
 	private int accountId;
 	private int pinCode;
+	private static double balance;
+	private static String accountTypeName;
+	
+	
 	
 	private ArrayList<AccountTypes> accounts;
 
@@ -28,14 +31,6 @@ public class AccountInfo extends User implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
 	public long getAccountId() {
 		return accountId;
@@ -49,18 +44,34 @@ public class AccountInfo extends User implements Serializable {
 	public void setPinCode(int pinCode) {
 		this.pinCode = pinCode;
 	}
-	
-	public AccountInfo() {
-		super();
+	public static String getAccountTypeName() {
+		return accountTypeName;
 	}
-	public AccountInfo(String username, String password, int accountId, int pinCode,
-			ArrayList<AccountTypes> accounts) {
+	public void setAccountTypeName(String accountTypeName) {
+		this.accountTypeName = accountTypeName;
+	}
+	public static double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	
+	public Account() {
+		super();
+		this.accountId = GenerateID.getCurrentID();
+		this.userType = "CUS";
+	}
+	public Account(String username, String password, int accountId, int pinCode,
+			ArrayList<AccountTypes> accounts, String accountTypeName, double balance) {
 		super();
 		this.username = username;
-		this.password = password;
 		this.accountId = accountId;
 		this.pinCode = pinCode;
 		this.accounts = accounts;
+		this.userType = "CUS";
+		this.accountTypeName = accountTypeName;
+		this.balance=balance;
 	}
 	
 	
@@ -84,6 +95,6 @@ public class AccountInfo extends User implements Serializable {
 	   }
 
 	   public String getAccount() {
-		   return "Account type: " + AccountTypes.getAccountTypeName() + ", Account number: " + AccountTypes.getAccountTypeCode() + ", Balance: " + AccountTypes.getBalance();
+		   return "Account type: " + AccountTypes.getAccountTypeName() + ", Account number: " + accountId + ", Balance: " + AccountTypes.getBalance();
 		       }
 }

@@ -8,12 +8,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
-import com.revarure.beans.AccountInfo;
+import com.revarure.beans.Account;
 
 public class FileStuff {
 	public static final String accountFile = "accountList.txt";
 	
-	public static void writeAccountFile(List<AccountInfo> acctInfo) {
+	public static void writeAccountFile(List<Account> acctInfo) {
 	try {
 		ObjectOutputStream acctOut = new ObjectOutputStream(new FileOutputStream(accountFile));
 		acctOut.writeObject(acctInfo);

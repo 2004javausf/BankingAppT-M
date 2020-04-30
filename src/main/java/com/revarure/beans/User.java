@@ -106,4 +106,9 @@ public String toString() {
 			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + ", maritalStatus=" + maritalStatus
 			+ ", isAdmin=" + isAdmin + ", isEmployee=" + isEmployee + ", id=" + id + "]";
 }
+
+public void createUser() {
+	
+	
+}
 }
