@@ -40,8 +40,6 @@ public class Employee extends User {
 		return "Employee [employeeID=" + employeeID + "password" + password + "]";
 	}
 	
-//view customer application
-	
-	//view customer list
+
 	
 }

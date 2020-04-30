@@ -77,6 +77,21 @@ public abstract class Bank {
 		
 	
 	//login information for customer and employee
+		
+		//view customer application
+		
+		//view customer list
+		
+		//create user account
+
+		//login method
+		
+		//cancel customer account
+		void deleteAccount() {
+			
+		}
+		
+		//approve or deny transaction
 	
     
 }

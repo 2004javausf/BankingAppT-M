@@ -93,7 +93,5 @@ public String toString() {
 			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 }
 
-//create user account
 
-//login method
 }

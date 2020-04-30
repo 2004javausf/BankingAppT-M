@@ -23,12 +23,7 @@ public class Admin extends Employee {
 		return "Admin [adminId=" + adminId + "]";
 	}
 	
-	//cancel customer account
-	void deleteAccount() {
-		
-	}
 	
-	//approve or deny transaction
 	
 	
 
