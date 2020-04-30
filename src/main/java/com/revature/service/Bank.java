@@ -1,11 +1,15 @@
 package com.revature.service;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import com.revarure.beans.Account;
 import com.revarure.beans.Admin;
 import com.revarure.beans.Employee;
 import com.revarure.beans.Transaction;
+import com.revature.util.FileStuff;
+import com.revature.util.Roster;
+
 
 public abstract class Bank {
 	private static ArrayList<Account> accounts;
@@ -35,6 +39,18 @@ public abstract class Bank {
 
 	
 	//transfer money between accounts
+	public void transfer(Account a, Account b) {
+		//transfer money from a to b
+		double firstBalance = a.getBalance();
+		double secondBalance = b.getBalance();
+		
+		Scanner s = new Scanner(System.in);
+		
+		long transferAmount = (s.nextLong());
+		a.setBalance(firstBalance - transferAmount);
+		b.setBalance(secondBalance + transferAmount);
+		FileStuff.writeAccountFile(Roster.accountInfoList);
+	}
 	
 	//view customer information
 	public void readCustomerInfo() {
