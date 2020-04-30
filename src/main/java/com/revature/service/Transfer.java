@@ -2,12 +2,12 @@ package com.revature.service;
 
 import java.util.Scanner;
 
-import com.revarure.beans.AccountTypes;
+import com.revarure.beans.Account;
 import com.revature.util.FileStuff;
 import com.revature.util.Roster;
 
 public class Transfer {
-	public void transfer(AccountTypes a, AccountTypes b) {
+	public void transfer(Account a, Account b) {
 		//transfer money from a to b
 		double firstBalance = a.getBalance();
 		double secondBalance = b.getBalance();
