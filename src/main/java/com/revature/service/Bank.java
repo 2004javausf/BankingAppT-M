@@ -1,6 +1,11 @@
-package com.revarure.beans;
+package com.revature.service;
 
 import java.util.ArrayList;
+
+import com.revarure.beans.Account;
+import com.revarure.beans.Admin;
+import com.revarure.beans.Employee;
+import com.revarure.beans.Transaction;
 
 public abstract class Bank {
 	private static ArrayList<Account> accounts;
@@ -8,31 +13,7 @@ public abstract class Bank {
 	private static ArrayList<Transaction> transactions;
 	private static ArrayList<Admin> admin;
 	
-	public ArrayList<Account> getAccounts() {
-		return accounts;
-	}
-	public void setAccounts(ArrayList<Account> accounts) {
-		this.accounts = accounts;
-	}
-	public ArrayList<Employee> getEmployees() {
-		return employees;
-	}
-	public void setEmployees(ArrayList<Employee> employees) {
-		this.employees = employees;
-	}
-	public ArrayList<Transaction> getTransactions() {
-		return transactions;
-	}
-	public void setTransactions(ArrayList<Transaction> transactions) {
-		this.transactions = transactions;
-	}
-	public ArrayList<Admin> getAdmin() {
-		return admin;
-	}
-	public void setAdmin(ArrayList<Admin> admin) {
-		this.admin = admin;
-	}
-
+	
 	//view transaction history
 	public static void completeTransactionHistory() {
 		for(Transaction t: transactions) {
