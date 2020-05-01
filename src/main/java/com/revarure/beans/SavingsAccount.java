@@ -16,12 +16,7 @@ public class SavingsAccount extends Account implements Serializable {
 	private List<Transaction> transactionList;
 	
 	//getters and Setters
-	public String getSavingsAccountNumber() {
-		return savingsAccountNumber;
-	}
-	public void setAccountNumber(String accountNumber) {
-		this.savingsAccountNumber = accountNumber;
-	}
+	
 	public static double getSavingsBalance() {
 		return savingsBalance;
 	}
@@ -35,11 +30,13 @@ public class SavingsAccount extends Account implements Serializable {
 		this.transactionList = transactionList;
 	}
 	
-	//Constructors
-	public SavingsAccount(String username, String userType, String password, String sSN, String savingsAccountNumber, double initDeposit) {
-		super(username, userType, password, sSN, savingsAccountNumber, initDeposit);
-		this.savingsAccountNumber = "1" + accountNumber ;
+	//Constructors	
+	public SavingsAccount(String username, String userType, String password, String sSN, String accountTypeName, double initDeposit) {
+		super(username, userType, password, sSN, accountTypeName, initDeposit);
+	
 	}
+	
+	
 	//toString Method
 	
 	@Override

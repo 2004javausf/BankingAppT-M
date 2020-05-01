@@ -3,6 +3,7 @@ package com.revature.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revarure.beans.Account;
@@ -22,6 +23,7 @@ public abstract class Bank {
 	private static ArrayList<Employee> employees;
 	private static ArrayList<Transaction> transactions;
 	private static ArrayList<Admin> admin;
+	private static Scanner userInput;
 	
 	//Getters and setters
 	public static ArrayList<User> getUsers() {
@@ -69,7 +71,7 @@ public abstract class Bank {
 	
 	
 	//view transaction history
-	public static void completeAccountTransactionHistory(String accountNumber) {
+	public static void completeAccountTransactionHistory(int accountNumber) {
 		ArrayList<Transaction> accountTransactions = new ArrayList<>();
 		for(Transaction transaction : transactions) {
 			if((transaction.getTransactionTypeName().equals("Deposit")) || ((transaction.getTransactionTypeName().equals("Withdrawal")))) {
@@ -94,10 +96,10 @@ public abstract class Bank {
 	}
 	
 	//find account
-	public static int findItemByAccountNumber(String accountNumber, ArrayList<Account> accounts){
+	public static int findItemByAccountNumber(int accountNumber, ArrayList<Account> accounts){
 		int index = 0;
 	    for(Account account : accounts){
-	        if(account.getAccountNumber() == Integer.valueOf(accountNumber)){
+	        if(account.getAccountNumber() == accountNumber){
 	            return index;
 	        }
 			index++;
@@ -137,7 +139,7 @@ public abstract class Bank {
 	
 	
 	//make a deposit
-	public void deposit(String accountNumber, double amount) {
+	public void deposit(int accountNumber, double amount) {
 		
 		if (amount >= 0.00) {
 				System.out.println("Deposit: $" + amount);
@@ -155,7 +157,7 @@ public abstract class Bank {
 
 	
 	//transfer money between accounts
-	public void transfer(String fromAccountNumber, String toAccountNumber, double amount) {
+	public void transfer(int fromAccountNumber, int toAccountNumber, double amount) {
 		//transfer money from a to ba
 		System.out.println("Transfer amount of " + amount + " from account: " + fromAccountNumber + " to account: " + toAccountNumber);
 		Account fromAccount = Bank.accounts.get(findItemByAccountNumber(fromAccountNumber, Bank.accounts));
@@ -192,7 +194,7 @@ public abstract class Bank {
 //    }
 //		System.out.println("Withdrawing the amount: $" + amount);
 //    }
-public void withdrawal(String accountNumber, double amount) {
+public void withdrawal(int accountNumber, double amount) {
 		
 		if (amount >= 0.00 && amount <= Bank.accounts.get(findItemByAccountNumber(accountNumber, Bank.accounts)).getBalance()) {
 				System.out.println("Withdrawal: $" + amount);
@@ -210,6 +212,32 @@ public void withdrawal(String accountNumber, double amount) {
 	//create an account
 		void createAccount() {
 			
+			System.out.println("Please enter your name: ");
+			String username = userInput.nextLine();
+			System.out.println("Please enter your userType: ");
+			String userType = userInput.nextLine();
+			System.out.println("Please enter your password: ");
+			String password = userInput.nextLine();
+			System.out.println("Please enter your social security number: ");
+			String sSN = userInput.nextLine();
+			System.out.println("Please enter your initial deposit: ");
+			double initDeposit = Double.valueOf(userInput.nextLine());
+			System.out.println("Please enter your account type (Checking or Savings): ");
+			String accountTypeName = userInput.nextLine();
+			
+			switch(accountTypeName) {
+			case "Checking":
+				accounts.add(new CheckingAccount(username, userType, password, sSN, accountTypeName, initDeposit));
+				break;
+			case "Savings":
+				accounts.add(new SavingsAccount(username, userType, password, sSN, accountTypeName, initDeposit));
+				break;
+			default:
+				break;
+			}
+			
+			System.out.println("Account created successfully!");
+	
 		}
 		
 	
@@ -239,13 +267,17 @@ public void withdrawal(String accountNumber, double amount) {
 //   return "Account type: " + accountTypeName + ", Account number: " + accountNumber + ", Balance: " + balance;
 //
 		
-		//create user account
 
 		//login method
 		
 		//cancel customer account
-		void deleteAccount() {
+		void deleteAccount(int accountNumber) {
+			if(Bank.findItemByAccountNumber(accountNumber, accounts) > -1) {
+				accounts.remove(Bank.findItemByAccountNumber(accountNumber, accounts));
+				System.out.println("Successfully deleted account: " + accountNumber);
+			}
 			
+			System.out.println("Account not found. No accounts deleted.");
 		}
 		
 		//approve or deny transaction

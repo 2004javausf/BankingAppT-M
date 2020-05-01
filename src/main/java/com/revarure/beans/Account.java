@@ -15,7 +15,15 @@ public class Account extends User implements Serializable {
 	private String accountTypeName;
 	private List<Transaction> transactionList;
 	
-
+	//Constructor
+	public Account(String username, String userType, String password, String sSN, String accountTypeName, double initDeposit) {
+		this.username = username;
+		this.password=password;
+		this.accountNumber = GenerateID.getCurrentID(Bank.getUsers().get(Bank.findUserBySSNNumber(sSN, Bank.getUsers())).getsSN());
+		this.userType = userType;
+		this.accountTypeName = accountTypeName;
+		this.balance=initDeposit;
+	}
 
 	public List<Transaction> getTransactionList() {
 		return transactionList;
@@ -62,15 +70,7 @@ public class Account extends User implements Serializable {
 		this.balance = balance;
 	}
 	
-		
-	public Account(String username, String userType, String password, String sSN, String accountTypeName, double initDeposit) {
-		this.username = username;
-		this.password=password;
-		this.accountNumber = GenerateID.getCurrentID(Bank.getUsers().get(Bank.findUserBySSNNumber(sSN, Bank.getUsers())).getsSN());
-		this.userType = userType;
-		this.accountTypeName = accountTypeName;
-		this.balance=initDeposit;
-	}
+	
 	
 	@Override
 	public String toString() {
