@@ -2,6 +2,7 @@ package com.revarure.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class User implements Serializable {
 	/**
@@ -16,6 +17,14 @@ public class User implements Serializable {
 	private String email;
 	private int id;
 	protected String userType;
+	
+	private boolean enabled = true;
+	
+
+
+	private Account primaryAccount;
+	private SavingsAccount savingsAccount;
+	private List<Recipient> recipientList;
 	
 	public int getId() {
 		return id;
@@ -38,14 +47,22 @@ public class User implements Serializable {
 		this.id = GenerateID.getCurrentID();
 	}
 
-	public User(String firstName, String middleName, String lastName, String address, Long phoneNumber, String email) {
+	public User(String firstName, String middleName, String lastName, String address, Long phoneNumber, String email,
+			int id, String userType, boolean enabled, Account primaryAccount, SavingsAccount savingsAccount,
+			List<Recipient> recipientList) {
 		super();
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		this.id = GenerateID.getCurrentID();
+		this.email = email;
+		this.id = id;
+		this.userType = userType;
+		this.enabled = enabled;
+		this.primaryAccount = primaryAccount;
+		this.savingsAccount = savingsAccount;
+		this.recipientList = recipientList;
 	}
 	
 	
@@ -86,12 +103,46 @@ public void setEmail(String email) {
 	this.email = email;
 }
 
+public boolean isEnabled() {
+	return enabled;
+}
+
+public void setEnabled(boolean enabled) {
+	this.enabled = enabled;
+}
+
+public Account getPrimaryAccount() {
+	return primaryAccount;
+}
+
+public void setPrimaryAccount(Account primaryAccount) {
+	this.primaryAccount = primaryAccount;
+}
+
+public SavingsAccount getSavingsAccount() {
+	return savingsAccount;
+}
+
+public void setSavingsAccount(SavingsAccount savingsAccount) {
+	this.savingsAccount = savingsAccount;
+}
+
+public List<Recipient> getRecipientList() {
+	return recipientList;
+}
+
+public void setRecipientList(List<Recipient> recipientList) {
+	this.recipientList = recipientList;
+}
 
 @Override
 public String toString() {
 	return "User [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", address="
-			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
+			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + ", id=" + id + ", userType="
+			+ userType + ", enabled=" + enabled + "]";
 }
+
+
 
 
 }

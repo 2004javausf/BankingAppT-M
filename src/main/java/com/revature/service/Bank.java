@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 import com.revarure.beans.Account;
 import com.revarure.beans.Admin;
+import com.revarure.beans.CheckingAccount;
 import com.revarure.beans.Employee;
+import com.revarure.beans.SavingsAccount;
 import com.revarure.beans.Transaction;
 import com.revature.util.FileStuff;
 import com.revature.util.Roster;
@@ -21,53 +23,53 @@ public abstract class Bank {
 	//view transaction history
 	public static void completeTransactionHistory() {
 		for(Transaction t: transactions) {
-			System.out.println("Date: " + t.getDate() + "; To Account: " + t.getToAccountNo() + "; From Account: " + t.getFromAccountNo() + "; Amount: " + t.getPositiveAmount());
+			System.out.println("Date: " + Transaction.getDate() + "; To Account: " + t.getToAccountNo() + "; From Account: " + t.getAccount() + "; Amount: " + t.getAmount());
 		}
 	}
 	
 	//make a deposit
-	public void deposit(double value) {
-		int time = 0;
-		if (value >= 0.00) {
-		        value = Account.getBalance() + value;
-		        System.out.println("Deposit: " + value);
-		        transactions.add("Time: " + Transaction.getDate().toString() + " Deposit value: " + value + " New balance: " + value);
-		        System.out.println("New balance: " + value + "\n");
-		        time++;
+	public void deposit(double amount) {
+		int value = 0;
+		if (amount >= 0.00) {
+				System.out.println("Deposit: $" + amount);
+		        amount = Account.getBalance() + amount;
+		        transactions.addAll("Time: " + Transaction.getDate().toString() + " Deposit value: " + amount + " New balance: " + amount);
+		        System.out.println("New balance: $" + amount + "\n");
+		        value++;
 		    }
+		else {
+			System.out.println("This transaction is invalid!");
+		}
 	}
 
 	
 	//transfer money between accounts
 	public void transfer(Account a, Account b) {
 		//transfer money from a to b
-		double firstBalance = a.getBalance();
-		double secondBalance = b.getBalance();
+		double firstAmount = SavingsAccount.getSavingsBalance();
+		double secondAmount = CheckingAccount.getCheckingBalance();
 		
 		Scanner s = new Scanner(System.in);
 		
-		long transferAmount = (s.nextLong());
-		a.setBalance(firstBalance - transferAmount);
-		b.setBalance(secondBalance + transferAmount);
+		double transferAmount = (s.nextLong());
+		a.setBalance(firstAmount - transferAmount);
+		b.setBalance(secondAmount + transferAmount);
 		FileStuff.writeAccountFile(Roster.accountInfoList);
 	}
 	
-	//view customer information
-	public void readCustomerInfo() {
-		
-	}
 	
 	
 	//make withdrawals
 	public void withdraw(double amount)
     {
-		int time = 0;
+		int value = 0;
    
 		if (amount >= 0.00 && amount <= Account.getBalance()) {
         double balance = Account.getBalance() - amount;
         balance = balance - amount;
-        time++;
+        value++;
     }
+		System.out.println("Withdrawing the amount: $" + amount);
     }
 	
 	//create an account
@@ -78,9 +80,29 @@ public abstract class Bank {
 	
 	//login information for customer and employee
 		
-		//view customer application
+		
+		
 		
 		//view customer list
+		//TODO: if account number starts with "CUS" generate customer list
+		 public String getCustomer(){
+		 return "Name: "+ Account.getUsername() +".";
+		  }
+
+			public String getAccountInfo() {
+			String info = Account.getBalance() + "\n" + Integer.toString(Account.getAccountNumber()) + "\n" ;
+			int i = 0;
+			 while(i<accounts.size()) {
+			   accounts.get(i);
+			info += Account.getAccountTypeName() + "\n";
+			   i++;
+			}
+			 return info;
+			}
+
+//public String getAccount() {
+//   return "Account type: " + accountTypeName + ", Account number: " + accountNumber + ", Balance: " + balance;
+//
 		
 		//create user account
 
@@ -92,6 +114,9 @@ public abstract class Bank {
 		}
 		
 		//approve or deny transaction
+		
+		
+		//view customer application
 	
     
 }

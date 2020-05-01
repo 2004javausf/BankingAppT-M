@@ -1,12 +1,14 @@
 package com.revarure.beans;
 
 public class GenerateID {
-	private static int nextID = 1;
+	static int nextID = 00001;
 	
 	public static int getCurrentID() {
+		int lastTwoOfSSN = Integer.parseInt(Account.getsSN().substring(Account.getsSN().length()-2, Account.getsSN().length()));
 		int currentID = nextID;
 		nextID++;
-		return currentID;
+		int randomNumber = (int)(Math.random() * Math.pow(10, 3));//generates a 3 digit number
+		return lastTwoOfSSN + currentID + randomNumber;//generates a number that will be attached to the various prefixes for different individuals in Banking System
 		
 	}
 	//if Id is for a customer it will have CUS and force it to have a certain number of digits

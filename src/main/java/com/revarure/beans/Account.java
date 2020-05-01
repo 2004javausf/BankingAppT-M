@@ -1,82 +1,91 @@
 package com.revarure.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Account extends User implements Serializable {
-	
+	//List of common properties for savings and checking account
 	private static final long serialVersionUID = 5206754926733442486L;
-	private String username;
-	private int accountId;
-	private int pinCode;
+	private static String username;
+	private String password;
+	private static String sSN;
+	protected static int accountNumber;
 	private static double balance;
 	private static String accountTypeName;
+	private List<Transaction> transactionList;
 	
 
 
-	public String getUsername() {
+	public List<Transaction> getTransactionList() {
+		return transactionList;
+	}
+
+	public void setTransactionList(List<Transaction> transactionList) {
+		this.transactionList = transactionList;
+	}
+
+	//getters and setters
+
+	public static String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
-	public long getAccountId() {
-		return accountId;
+	public static int getAccountNumber() {
+		return accountNumber;
 	}
-	public void setAccountId(int accountId) {
-		this.accountId = accountId;
+	public static String getsSN() {
+		return sSN;
 	}
-	public int getPinCode() {
-		return pinCode;
+
+	public void setsSN(String sSN) {
+		Account.sSN = sSN;
 	}
-	public void setPinCode(int pinCode) {
-		this.pinCode = pinCode;
+	public void setAccountNumber(int accountId) {
+		this.accountNumber = accountId;
 	}
+	
 	public static String getAccountTypeName() {
 		return accountTypeName;
 	}
 	public void setAccountTypeName(String accountTypeName) {
-		this.accountTypeName = accountTypeName;
+		Account.accountTypeName = accountTypeName;
 	}
 	public static double getBalance() {
 		return balance;
 	}
 	public void setBalance(double balance) {
-		this.balance = balance;
+		Account.balance = balance;
 	}
 	
 	public Account() {
 		super();
-		this.accountId = GenerateID.getCurrentID();
+		this.accountNumber = GenerateID.getCurrentID();
 		this.userType = "CUS";
 	}
-	public Account(String username, String password, int accountId, int pinCode, String accountTypeName, double balance) {
+	public Account(String username, String password, String sSN, int accountId, String accountTypeName, double initDeposit) {
 		super();
 		this.username = username;
-		this.accountId = accountId;
-		this.pinCode = pinCode;
+		this.password=password;
+		Account.sSN=sSN;
+		this.accountNumber = GenerateID.getCurrentID();
 		this.userType = "CUS";
-		this.accountTypeName = accountTypeName;
-		this.balance=balance;
+		Account.accountTypeName = accountTypeName;
+		Account.balance=initDeposit;
 	}
 	
-	
-	   public String getCustomer(){
-		        return "Name: "+ username +".";
-		      }
-	   
-//	   public String getAccountInfo() {
-//	     String info = this.getCustomer() + "\n" ;
-//	     int i = 0;
-//	     while(i<accounts.size()) {
-//	       info += accounts.get(i).getAccountTypeName() + "\n";
-//	       i++;
-//	}
-//	     return info;
-//	   }
-
-	   public String getAccount() {
-		   return "Account type: " + accountTypeName + ", Account number: " + accountId + ", Balance: " + balance;
-		       }
+	@Override
+	public String toString() {
+		return "Account [username=" + username + ", accountNumber=" + accountNumber + "SSN=" + sSN + "balance= " + balance + ", transactionList=" + transactionList + "]";
+	}
 }

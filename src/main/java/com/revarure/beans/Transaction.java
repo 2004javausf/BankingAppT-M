@@ -2,42 +2,43 @@ package com.revarure.beans;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Transaction implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -9180744069953356784L;
-	private static int transactionId = 0;
+	private static int transactionNumber = 0;
 	private String transactionTypeName;
-	private int fromAccountNo;
+	private Account account;
 	private int toAccountNo;
-	private int positiveAmount;//if sign of the amount is positive it increases the from account(loses money) and decreases the to account (gains money) while a negative decreases the from account and increases the to account
-	private int negativeAmount;
-	private static LocalDateTime date;
+	private static double amount;
+	private static double availableBalance;
+	private static Date date;
 	
 	public Transaction() {
 		super();
 	}
 	
-	public Transaction(String transactionTypeName, int fromAccountNo,
-			int toAccountNo, int positiveAmount, int negativeAmount, LocalDateTime date) {
+	public Transaction(int transactionNumber, String transactionTypeName, Account account,
+			int toAccountNo, double amount, double availableBalance, Date date) {
 		super();
-		this.transactionId = transactionId;
+		this.transactionNumber = transactionNumber;
 		this.transactionTypeName = transactionTypeName;
-		this.fromAccountNo = fromAccountNo;
+		this.account = account;
 		this.toAccountNo = toAccountNo;
-		this.positiveAmount = positiveAmount;
-		this.negativeAmount = negativeAmount;
+		this.amount = amount;
+		this.availableBalance = availableBalance;
 		this.date = date;
 	}
 	
 	
-	public int getTransactionId() {
-		return transactionId;
+	public int getTransactionNumber() {
+		return transactionNumber;
 	}
-	public void setTransactionId(int transactionId) {
-		this.transactionId = transactionId;
+	public void setTransactionNumber(int transactionNumber) {
+		this.transactionNumber = transactionNumber;
 	}
 
 	public String getTransactionTypeName() {
@@ -46,11 +47,11 @@ public class Transaction implements Serializable{
 	public void setTransactionTypeName(String transactionTypeName) {
 		this.transactionTypeName = transactionTypeName;
 	}
-	public int getFromAccountNo() {
-		return fromAccountNo;
+	public Account getAccount() {
+		return account;
 	}
-	public void setFromAccountNo(int fromAccountNo) {
-		this.fromAccountNo = fromAccountNo;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 	public int getToAccountNo() {
 		return toAccountNo;
@@ -58,30 +59,30 @@ public class Transaction implements Serializable{
 	public void setToAccountNo(int toAccountNo) {
 		this.toAccountNo = toAccountNo;
 	}
-	public int getPositiveAmount() {
-		return positiveAmount;
+	public static double getAmount() {
+		return amount;
 	}
-	public void setPositiveAmount(int positiveAmount) {
-		this.positiveAmount = positiveAmount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
-	public int getNegativeAmount() {
-		return negativeAmount;
+	public static double getAvailableBalance() {
+		return availableBalance;
 	}
-	public void setNegativeAmount(int negativeAmount) {
-		this.negativeAmount = negativeAmount;
+	public void setNegativeAmount(double availableBalance) {
+		this.availableBalance = availableBalance;
 	}
-	public static LocalDateTime getDate() {
+	public static Date getDate() {
 		return date;
 	}
-	public void setDate(LocalDateTime date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	
 	@Override
 	public String toString() {
-		return "Transaction [transactionId=" + transactionId + ", transactionTypeName="
-				+ transactionTypeName + ", fromAccountNo=" + fromAccountNo + ", toAccountNo=" + toAccountNo
-				+ ", positiveAmount=" + positiveAmount + ", negativeAmount=" + negativeAmount + ", date=" + date + "]";
+		return "Transaction [transactionNumber=" + transactionNumber + ", transactionTypeName="
+				+ transactionTypeName + ", account=" + account + ", toAccountNo=" + toAccountNo
+				+ ", amount=" + amount + ", availableBalance=" + availableBalance + ", date=" + date + "]";
 	}
 	
 }

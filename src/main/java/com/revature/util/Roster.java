@@ -11,7 +11,7 @@ public class Roster {
 			new ArrayList<Account>();
 
 			
-			public static Account findWarriorByName(String inputName) {
+			public static Account findUserByName(String inputName) {
 				for(int i=0;i<accountInfoList.size();i++) {
 					String name=accountInfoList.get(i).getUsername();
 					if(inputName.equals(name)) {
