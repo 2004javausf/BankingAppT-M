@@ -16,10 +16,10 @@ public class Account extends User implements Serializable {
 	private List<Transaction> transactionList;
 	
 	//Constructor
-	public Account(String username, String userType, String password, String sSN, String accountTypeName, double initDeposit) {
+	public Account(String username, String userType, String password, int i, String accountTypeName, double initDeposit) {
 		this.username = username;
 		this.password=password;
-		this.accountNumber = GenerateID.getCurrentID(Bank.getUsers().get(Bank.findUserBySSNNumber(sSN, Bank.getUsers())).getsSN());
+		this.accountNumber = GenerateID.getCurrentID(Bank.getUsers().get(Bank.findUserBySSNNumber(i, Bank.getUsers())).getsSN());
 		this.userType = userType;
 		this.accountTypeName = accountTypeName;
 		this.balance=initDeposit;
