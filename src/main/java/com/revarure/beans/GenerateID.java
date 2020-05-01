@@ -3,8 +3,8 @@ package com.revarure.beans;
 public class GenerateID {
 	static int nextID = 00001;
 	
-	public static int getCurrentID() {
-		int lastTwoOfSSN = Integer.parseInt(Account.getsSN().substring(Account.getsSN().length()-2, Account.getsSN().length()));
+	public static int getCurrentID(String sSN) {
+		int lastTwoOfSSN = Integer.parseInt(sSN.substring(sSN.length()-2, sSN.length()));
 		int currentID = nextID;
 		nextID++;
 		int randomNumber = (int)(Math.random() * Math.pow(10, 3));//generates a 3 digit number

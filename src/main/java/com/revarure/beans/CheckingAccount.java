@@ -35,22 +35,12 @@ public class CheckingAccount extends Account implements Serializable{
 //	}
 	
 	//Constructors
-	public CheckingAccount() {
-		super();
+	public CheckingAccount(String username, String userType, String password, String sSN, String checkingAccountNumber, double initDeposit) {
+		super(username, userType, password, sSN, checkingAccountNumber, initDeposit);
+		this.checkingBalance=checkingBalance;
 	}
 	
-	public CheckingAccount(String debitCardNumber, double checkingBalance) {
-		super();
-		this.debitCardNumber = "4" + accountNumber;//creating debit number starting with 4
-		this.checkingBalance=checkingBalance;
-//		this.pinCode = pinCode;
-	}
 	
-	public CheckingAccount(String name, String sSN, String debitCardNumber, double checkingBalance, double initDeposit) {
-		super();
-		this.debitCardNumber = "4" + accountNumber;
-		this.checkingBalance=checkingBalance;
-//		this.pinCode = pinCode;
-	}
+	
 
 }

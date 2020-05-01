@@ -3,6 +3,8 @@ package com.revarure.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import com.revature.service.Bank;
+
 public class SavingsAccount extends Account implements Serializable {
 	/**
 	 * 
@@ -32,18 +34,10 @@ public class SavingsAccount extends Account implements Serializable {
 	public void setTransactionList(List<Transaction> transactionList) {
 		this.transactionList = transactionList;
 	}
+	
 	//Constructors
-	public SavingsAccount() {
-		super();
-	}
-	
-	public SavingsAccount( int savingsAccountNumber, int accessCode) {
-		super();
-		this.savingsAccountNumber = "1" + accountNumber ;//creating savings account number starting with 1
-	}
-	
-	public SavingsAccount(String name, String sSN, String savingsAccountNumber, double initDeposit) {
-		super();
+	public SavingsAccount(String username, String userType, String password, String sSN, String savingsAccountNumber, double initDeposit) {
+		super(username, userType, password, sSN, savingsAccountNumber, initDeposit);
 		this.savingsAccountNumber = "1" + accountNumber ;
 	}
 	//toString Method

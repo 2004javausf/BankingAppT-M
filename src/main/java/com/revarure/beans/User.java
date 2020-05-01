@@ -15,6 +15,7 @@ public class User implements Serializable {
 	private String address;
 	private Long phoneNumber;
 	private String email;
+	private String sSN;
 	private int id;
 	protected String userType;
 	
@@ -44,10 +45,10 @@ public class User implements Serializable {
 
 	public User() {
 		super();
-		this.id = GenerateID.getCurrentID();
+		this.id = GenerateID.getCurrentID(sSN);
 	}
 
-	public User(String firstName, String middleName, String lastName, String address, Long phoneNumber, String email,
+	public User(String firstName, String middleName, String lastName, String address, Long phoneNumber, String email, String sSN,
 			int id, String userType, boolean enabled, Account primaryAccount, SavingsAccount savingsAccount,
 			List<Recipient> recipientList) {
 		super();
@@ -57,7 +58,8 @@ public class User implements Serializable {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.id = GenerateID.getCurrentID();
+		this.sSN=sSN;
+		this.id = GenerateID.getCurrentID(sSN);
 		this.userType = userType;
 		this.enabled = enabled;
 		this.primaryAccount = primaryAccount;
@@ -102,6 +104,13 @@ public String getEmail() {
 public void setEmail(String email) {
 	this.email = email;
 }
+public String getsSN() {
+	return sSN;
+}
+
+public void setsSN(String sSN) {
+	this.sSN = sSN;
+}
 
 public boolean isEnabled() {
 	return enabled;
@@ -138,7 +147,7 @@ public void setRecipientList(List<Recipient> recipientList) {
 @Override
 public String toString() {
 	return "User [firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", address="
-			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + ", id=" + id + ", userType="
+			+ address + ", phoneNumber=" + phoneNumber + ", email=" + email + "SSN=" + sSN + ", id=" + id + ", userType="
 			+ userType + ", enabled=" + enabled + "]";
 }
 
