@@ -57,7 +57,7 @@ public class User implements Serializable {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
-		this.id = id;
+		this.id = GenerateID.getCurrentID();
 		this.userType = userType;
 		this.enabled = enabled;
 		this.primaryAccount = primaryAccount;

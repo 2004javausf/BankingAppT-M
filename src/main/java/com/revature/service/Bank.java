@@ -1,6 +1,8 @@
 package com.revature.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.revarure.beans.Account;
@@ -20,6 +22,9 @@ public abstract class Bank {
 	private static ArrayList<Admin> admin;
 	
 	
+	
+	
+	
 	//view transaction history
 	public static void completeTransactionHistory() {
 		for(Transaction t: transactions) {
@@ -27,15 +32,28 @@ public abstract class Bank {
 		}
 	}
 	
+	//find account
+	public static int findItemByAccountNumber(String accountNumber, ArrayList<Account> accounts){
+		int index = 0;
+	    for(Account account : accounts){
+	        if(account.getAccountNumber() == Integer.valueOf(accountNumber)){
+	            return index;
+	        }
+			index++;
+	    }
+	    System.out.println("This account does not exist.");
+	    return -1;
+	    }
 	//make a deposit
-	public void deposit(double amount) {
-		int value = 0;
+	public void deposit(String accountNumber, double amount) {
+		
 		if (amount >= 0.00) {
 				System.out.println("Deposit: $" + amount);
-		        amount = Account.getBalance() + amount;
-		        transactions.addAll("Time: " + Transaction.getDate().toString() + " Deposit value: " + amount + " New balance: " + amount);
-		        System.out.println("New balance: $" + amount + "\n");
-		        value++;
+				Account account = Bank.accounts.get(findItemByAccountNumber(accountNumber, Bank.accounts));//returns 
+		        amount = account.getBalance() + amount;
+//		        transactions.add("Time: " + Transaction.getDate().toString() + " Deposit value: " + amount + " New balance: " + amount);
+		        transactions.add(new Transaction("Deposit", account, amount, LocalDateTime.now()));
+		        System.out.println("New balance: $" + amount + "\n"); 
 		    }
 		else {
 			System.out.println("This transaction is invalid!");

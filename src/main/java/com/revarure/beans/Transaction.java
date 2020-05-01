@@ -1,6 +1,7 @@
 package com.revarure.beans;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,24 +15,19 @@ public class Transaction implements Serializable{
 	private Account account;
 	private int toAccountNo;
 	private static double amount;
-	private static double availableBalance;
-	private static Date date;
+	private static LocalDateTime date;
 	
 	public Transaction() {
-		super();
 	}
-	
-	public Transaction(int transactionNumber, String transactionTypeName, Account account,
-			int toAccountNo, double amount, double availableBalance, Date date) {
-		super();
-		this.transactionNumber = transactionNumber;
+	public Transaction(String transactionTypeName, Account account,
+			double amount, LocalDateTime date) {
+		this.transactionNumber = GenerateID.getCurrentID();
 		this.transactionTypeName = transactionTypeName;
 		this.account = account;
-		this.toAccountNo = toAccountNo;
 		this.amount = amount;
-		this.availableBalance = availableBalance;
 		this.date = date;
 	}
+	
 	
 	
 	public int getTransactionNumber() {
@@ -65,16 +61,11 @@ public class Transaction implements Serializable{
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public static double getAvailableBalance() {
-		return availableBalance;
-	}
-	public void setNegativeAmount(double availableBalance) {
-		this.availableBalance = availableBalance;
-	}
-	public static Date getDate() {
+	
+	public static LocalDateTime getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 	
@@ -82,7 +73,7 @@ public class Transaction implements Serializable{
 	public String toString() {
 		return "Transaction [transactionNumber=" + transactionNumber + ", transactionTypeName="
 				+ transactionTypeName + ", account=" + account + ", toAccountNo=" + toAccountNo
-				+ ", amount=" + amount + ", availableBalance=" + availableBalance + ", date=" + date + "]";
+				+ ", amount=" + amount + ", date=" + date + "]";
 	}
 	
 }
